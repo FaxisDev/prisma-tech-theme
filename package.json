@@ -35,6 +35,24 @@
         "path": "./themes/prisma-tech-color-theme.json"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "prismaTech",
+          "title": "Prisma-Tech",
+          "icon": "$(symbol-color)"
+        }
+      ]
+    },
+    "views": {
+      "prismaTech": [
+        {
+          "type": "webview",
+          "id": "prismaTech.customizerView",
+          "name": "Personalizar tema"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "prismaTech.customize",
@@ -112,7 +130,7 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Strings (por defecto #61FFCA)"
+              "description": "Strings (por defecto #CCFF4D)"
             },
             "keyword": {
               "type": "string",
@@ -138,29 +156,59 @@
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
               "description": "Propiedades (por defecto #5CDFFF)"
             },
+            "objectKey": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Claves de objetos literales, p. ej. { severity: 'error' } (por defecto #FF6EB6)"
+            },
             "type": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Clases y tipos (por defecto #FFD23F)"
+              "description": "Clases y tipos (por defecto #FFD21F)"
+            },
+            "classReference": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Clases usadas como valor, p. ej. en imports: [...] o new X (por defecto #C4EAFF)"
+            },
+            "injected": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Servicios inyectados como private readonly http: HttpClient (por defecto #9AD1FF)"
             },
             "parameter": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Parámetros (por defecto #FFB86C)"
+              "description": "Parámetros (por defecto #C4EAFF)"
             },
             "number": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Números (por defecto #FF9A3C)"
+              "description": "Números (por defecto #CCFF4D)"
             },
             "constant": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Constantes y booleanos (por defecto #F77BFF)"
+              "description": "Constantes: null, undefined, enums (por defecto #F77BFF)"
+            },
+            "boolean": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Booleanos true / false (por defecto #3BA9F5)"
+            },
+            "constVariable": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Variables declaradas con const (por defecto #FF3B4E)"
             },
             "tag": {
               "type": "string",
@@ -178,9 +226,15 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "this / self / super (por defecto #FF4D5E)"
+              "description": "this / self / super (por defecto #FFD21F)"
             }
           }
+        },
+        "prismaTech.titleGlow": {
+          "type": "boolean",
+          "default": true,
+          "order": 7,
+          "description": "Brillo animado (respiración) en el título del panel Personalizar tema. No afecta al tema."
         }
       }
     }

@@ -5,16 +5,22 @@ Tema oscuro y personalizable para VS Code que mezcla la paleta de **Aura** (verd
 ## Personalización
 
 ### Panel visual
-Abre la paleta de comandos (`Cmd + Shift + P`) y ejecuta **Prisma-Tech: Personalizar tema**. Desde ahí puedes:
+Haz clic en el icono de **Prisma-Tech** en la barra de actividad, o abre la paleta de comandos (`Cmd + Shift + P`) y ejecuta **Prisma-Tech: Personalizar tema**. Desde ahí puedes:
 
 - Cambiar el color de acento (con atajos de colores rápidos) y el fondo del editor.
 - Cambiar cada color de sintaxis: comentarios, strings, keywords, funciones, clases, etc.
 - Activar o desactivar cursivas en comentarios, keywords y parámetros.
 - Activar el **texto brillante** para tener más contraste.
-- Ver el resultado al instante en una vista previa.
+- Ver el resultado al instante: desde la barra lateral, la vista previa se abre en una pestaña del editor y se cierra al salir de la sección.
+- Cambiar de lenguaje en la vista previa: TypeScript, JavaScript, Dart, Python, SCSS, HTML, JSON, PHP, Java, C++, Go y Rust, cada uno con su icono.
+- Hacer clic en cualquier palabra de la vista previa para saltar al color que la controla.
+- Ver el contraste de cada color contra el fondo; los que se leen mal se marcan con ⚠.
+- Pulsar **✦ Modo prisma** para repartir los colores de sintaxis por todo el espectro a partir del acento.
+- Ver los cambios aplicados en VS Code mientras editas, sin recargar la ventana. Si sales sin guardar, vuelven los colores guardados.
+- El título del panel tiene un brillo prismático que respira; se desactiva con «Brillo animado en el título» o con `prismaTech.titleGlow`.
 - Volver cualquier color a su valor original con el botón ↺, o restablecer todo.
 
-Al pulsar **Guardar y aplicar**, el tema se regenera y VS Code te pedirá recargar la ventana.
+Al pulsar **Guardar y aplicar**, el tema se regenera y se aplica al momento, sin recargar la ventana.
 
 ### Desde Ajustes
 También puedes editarlo en `settings.json`:
@@ -47,18 +53,24 @@ El fondo de paneles, barra lateral, bordes, números de línea y terminal se cal
 | Uso | Color |
 |---|---|
 | Fondo editor | `#1B2126` |
-| Acento / strings | `#61FFCA` |
+| Acento | `#61FFCA` |
+| Strings | `#CCFF4D` |
 | Keywords | `#ACA0FF` |
 | Storage / atributos | `#C8B9FF` |
 | Funciones | `#6E9CFF` |
 | Propiedades | `#5CDFFF` |
-| Clases / tipos | `#FFD23F` |
-| Parámetros | `#FFB86C` |
-| Números | `#FF9A3C` |
-| Constantes | `#F77BFF` |
+| Claves de objetos (severity:, detail:) | `#FF6EB6` |
+| Clases / tipos | `#FFD21F` |
+| Clases usadas (imports, new X) | `#C4EAFF` |
+| Servicios inyectados (http, messageService) | `#9AD1FF` |
+| Parámetros | `#C4EAFF` |
+| Números | `#CCFF4D` |
+| Constantes (null, enums) | `#F77BFF` |
+| Booleanos (true, false) | `#3BA9F5` |
+| Variables const | `#FF3B4E` |
 | Tags | `#FF5370` |
 | Operadores | `#5ED3FF` |
-| this / self | `#FF4D5E` |
+| this / self | `#FFD21F` |
 | Comentarios | `#5C6B75` |
 
 ## Desarrollo

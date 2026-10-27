@@ -14,18 +14,23 @@ const DEFAULTS = Object.freeze({
   brightText: false,
   syntax: Object.freeze({
     comment: '#5C6B75',
-    string: '#61FFCA',
+    string: '#CCFF4D',
     keyword: '#ACA0FF',
     storage: '#C8B9FF',
     function: '#6E9CFF',
     property: '#5CDFFF',
-    type: '#FFD23F',
-    parameter: '#FFB86C',
-    number: '#FF9A3C',
+    objectKey: '#FF6EB6',
+    type: '#FFD21F',
+    classReference: '#C4EAFF',
+    injected: '#9AD1FF',
+    parameter: '#C4EAFF',
+    number: '#CCFF4D',
     constant: '#F77BFF',
+    boolean: '#3BA9F5',
+    constVariable: '#FF3B4E',
     tag: '#FF5370',
     operator: '#5ED3FF',
-    self: '#FF4D5E'
+    self: '#FFD21F'
   })
 });
 
@@ -36,10 +41,15 @@ const SYNTAX_LABELS = Object.freeze({
   storage: 'Storage (const, class, function)',
   function: 'Funciones y métodos',
   property: 'Propiedades',
+  objectKey: 'Claves de objetos (severity:, detail:)',
   type: 'Clases y tipos',
+  classReference: 'Clases usadas (imports: [...], new X)',
+  injected: 'Servicios inyectados (http, messageService)',
   parameter: 'Parámetros',
   number: 'Números',
-  constant: 'Constantes y booleanos',
+  constant: 'Constantes (null, undefined, enums)',
+  boolean: 'Booleanos (true, false)',
+  constVariable: 'Variables const',
   tag: 'Tags HTML / JSX',
   operator: 'Operadores',
   self: 'this / self / super'
@@ -49,9 +59,9 @@ const THEME = Object.freeze({ name: 'Prisma-Tech', file: 'prisma-tech-color-them
 
 // Tonos de texto: suave por defecto, o brillante si "brightText" está activo.
 const TEXT = Object.freeze({
-  // Blancos mezclados con azul cielo (#87CEEB).
-  soft: Object.freeze({ fg: '#C7E2EF', fgDim: '#8FA8B6', variable: '#DBF0F9' }),
-  bright: Object.freeze({ fg: '#E1F3FA', fgDim: '#A9C2CF', variable: '#EDF8FC' })
+  // Todos los blancos usan el mismo azul cielo muy claro (#C4EAFF); el modo brillante, una versión más clara.
+  soft: Object.freeze({ fg: '#C4EAFF', fgDim: '#8FA8B6', variable: '#C4EAFF' }),
+  bright: Object.freeze({ fg: '#DCF2FF', fgDim: '#A9C2CF', variable: '#DCF2FF' })
 });
 
 const HEX = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i;
@@ -108,7 +118,8 @@ function buildTheme(options) {
     // Apenas más claro que el fondo: los bordes se notan muy suavemente sin cortar.
     border: mix(bg, '#FFFFFF', 0.03),
     borderLight: mix(bg, '#FFFFFF', 0.09),
-    lineNumber: mix(bg, '#FFFFFF', 0.17),
+    // Números de línea: el azul cielo del texto, apagado hacia el fondo para que combine.
+    lineNumber: mix(bg, text.fg, 0.22),
     // Iconos no seleccionados de la barra de actividad: pasivos, con el mismo tono del fondo.
     iconOff: mix(bg, text.fgDim, 0.35),
     guide: mix(bg, '#FFFFFF', 0.05),
@@ -118,10 +129,13 @@ function buildTheme(options) {
     fgDim: text.fgDim,
     variable: text.variable,
     muted: mix(bg, text.fg, 0.4),
+    blame: mix(bg, text.fg, 0.3),
     red: '#FF4D5E',
     orange: '#FFA94D',
-    // Verde pino para las clases de CSS/SCSS: más profundo que el verde aura.
-    pine: '#4AEB9E'
+    // Azul mar para las clases de CSS/SCSS (.invade-panel).
+    cssClass: '#3BA9F5',
+    // Naranja intenso para const/let/var y constructor.
+    declare: '#FF9100'
   };
   const italic = (on) => (on ? 'italic' : '');
 
@@ -137,7 +151,8 @@ function buildTheme(options) {
     'progressBar.background': g, 'scrollbar.shadow': '#00000000',
     'scrollbarSlider.background': c.muted + '33', 'scrollbarSlider.hoverBackground': c.muted + '55',
     'scrollbarSlider.activeBackground': g + '55',
-    'input.background': c.bgDark, 'input.border': c.borderLight, 'input.foreground': c.fg,
+    // Texto de campos y áreas de texto: más suave que el texto normal, en la misma gama azulada del fondo.
+    'input.background': c.bgDark, 'input.border': c.borderLight, 'input.foreground': mix(c.fg, c.fgDim, 0.5),
     'input.placeholderForeground': c.muted, 'inputOption.activeBorder': g, 'inputOption.activeBackground': g + '26',
     'dropdown.background': c.bgDark, 'dropdown.border': c.borderLight, 'dropdown.foreground': c.fg,
     'checkbox.background': c.bgDark, 'checkbox.border': c.borderLight,
@@ -186,7 +201,7 @@ function buildTheme(options) {
     'editorBracketHighlight.foreground5': s.constant, 'editorBracketHighlight.foreground6': s.type,
     'editorBracketHighlight.unexpectedBracket.foreground': c.red,
     'editorError.foreground': c.red, 'editorWarning.foreground': c.orange, 'editorInfo.foreground': s.property,
-    'editorHint.foreground': g, 'editorCodeLens.foreground': c.muted, 'editorLink.activeForeground': g,
+    'editorHint.foreground': g, 'editorCodeLens.foreground': c.blame, 'editorLink.activeForeground': g,
     'editorGutter.addedBackground': g + 'B3', 'editorGutter.modifiedBackground': s.function + 'B3',
     'editorGutter.deletedBackground': c.red + 'B3',
     'editorOverviewRuler.border': c.border, 'editorOverviewRuler.findMatchForeground': c.orange + 'AA',
@@ -241,7 +256,25 @@ function buildTheme(options) {
     'charts.foreground': c.fg, 'charts.lines': c.borderLight, 'charts.green': g, 'charts.red': c.red,
     'charts.blue': s.function, 'charts.yellow': s.type, 'charts.orange': c.orange, 'charts.purple': s.keyword,
     'editorWarning.background': c.orange + '1A', 'editorHoverWidget.foreground': c.fg,
-    'symbolIcon.packageForeground': c.orange
+    'symbolIcon.packageForeground': c.orange,
+    // Git blame en línea (GitLens y el de VS Code): discreto, en el tono del texto pero apagado.
+    'gitlens.trailingLineForegroundColor': c.blame, 'gitlens.trailingLineBackgroundColor': '#00000000',
+    'git.blame.editorDecorationForeground': c.blame,
+    // Chat (Copilot y agentes): caja de texto, mensajes y etiquetas con la paleta del tema.
+    'agentsChatInput.background': c.bgDark, 'agentsChatInput.foreground': mix(c.fg, c.fgDim, 0.5),
+    'agentsChatInput.border': c.borderLight, 'agentsChatInput.focusBorder': g + '80',
+    'agentsChatInput.placeholderForeground': c.muted,
+    'inlineChat.background': c.bgDark, 'inlineChat.foreground': c.fg, 'inlineChat.border': c.borderLight,
+    'inlineChatInput.background': c.bgDark, 'inlineChatInput.border': c.borderLight,
+    'inlineChatInput.focusBorder': g + '80', 'inlineChatInput.placeholderForeground': c.muted,
+    'chat.requestBackground': c.bgLight, 'chat.requestBorder': c.borderLight,
+    'chat.requestBubbleBackground': c.bgLighter, 'chat.requestBubbleHoverBackground': mix(c.bgLighter, '#FFFFFF', 0.04),
+    'chat.requestCodeBorder': s.function + '55', 'chat.checkpointSeparator': c.borderLight,
+    'chat.slashCommandBackground': s.keyword + '26', 'chat.slashCommandForeground': s.keyword,
+    'chat.avatarBackground': c.bgDarker, 'chat.avatarForeground': c.fg,
+    'chat.editedFileForeground': c.orange, 'chat.linesAddedForeground': g, 'chat.linesRemovedForeground': c.red,
+    'chat.workingProgressStableIconForeground': g,
+    'interactive.activeCodeBorder': g, 'interactive.inactiveCodeBorder': c.borderLight
   };
 
   const t = (scope, foreground, fontStyle) => {
@@ -257,8 +290,15 @@ function buildTheme(options) {
     t(['constant.character.escape', 'string.regexp'], s.operator),
     t(['punctuation.definition.template-expression', 'punctuation.section.embedded'], s.constant),
     t(['constant.numeric'], s.number),
-    t(['constant.language', 'constant.language.boolean', 'constant.language.null'], s.constant),
-    t(['constant.other', 'variable.other.constant', 'variable.other.enummember'], s.constant),
+    t(['constant.language', 'constant.language.null'], s.constant),
+    // true / false: azul mar.
+    t(['constant.language.boolean'], s.boolean),
+    t(['constant.other', 'variable.other.enummember'], s.constant),
+    // Declaraciones: la palabra const/let/var en naranja y el nombre de la variable en rojo.
+    t(['storage.type.ts', 'storage.type.tsx', 'storage.type.js', 'storage.type.jsx'], c.declare),
+    t(['variable.other.constant'], s.constVariable),
+    // Nombres dentro de import { ... }: el mismo azul cielo claro que las clases usadas.
+    t(['variable.other.readwrite.alias', 'meta.import variable.other.readwrite', 'meta.export variable.other.readwrite'], s.classReference),
     t(['keyword', 'keyword.control', 'storage.modifier'], s.keyword),
     t(['keyword.control.flow', 'keyword.control.import', 'keyword.control.export', 'keyword.control.from'], s.keyword, italic(o.italicKeywords)),
     t(['storage.type', 'storage'], s.storage),
@@ -270,16 +310,18 @@ function buildTheme(options) {
     t(['entity.name.function', 'meta.function-call', 'support.function', 'variable.function'], s.function),
     t(['entity.name.type', 'entity.name.class', 'support.class', 'support.type', 'entity.other.inherited-class'], s.type),
     t(['entity.name.type.interface', 'entity.name.type.alias'], s.type, 'italic'),
-    t(['variable.other.property', 'variable.other.object.property', 'meta.object-literal.key', 'support.type.property-name'], s.property),
+    t(['variable.other.property', 'variable.other.object.property', 'support.type.property-name'], s.property),
+    // Claves de objetos literales ({ severity: 'error' }): rosa mexicano.
+    t(['meta.object-literal.key', 'meta.object-literal.key entity.name.function'], s.objectKey),
     t(['variable.other.object'], c.variable),
     t(['entity.name.tag', 'meta.tag.sgml'], s.tag),
     t(['support.class.component', 'entity.name.tag.tsx', 'entity.name.tag.jsx'], s.type),
     t(['entity.other.attribute-name'], s.storage, 'italic'),
     t(['punctuation.definition.tag'], s.operator),
-    t(['entity.other.attribute-name.class.css', 'entity.other.attribute-name.class.scss', 'entity.other.attribute-name.class.less'], c.pine),
+    t(['entity.other.attribute-name.class.css', 'entity.other.attribute-name.class.scss', 'entity.other.attribute-name.class.less'], c.cssClass),
     t(['entity.other.attribute-name.id.css'], s.parameter),
-    // Variables de CSS/SCSS (--mi-var, $mi-var): blanco con toque azul cielo.
-    t(['variable.css', 'variable.argument.css', 'support.type.custom-property', 'variable.scss', 'variable.other.less'], mix(c.variable, '#87CEEB', 0.35)),
+    // Variables de CSS/SCSS (--mi-var, $mi-var): el mismo azul cielo claro del texto.
+    t(['variable.css', 'variable.argument.css', 'support.type.custom-property', 'variable.scss', 'variable.other.less'], c.variable),
     t(['support.type.property-name.css'], s.property),
     t(['support.constant.property-value.css', 'keyword.other.unit'], s.number),
     // Morado más claro en CSS/SCSS: etiquetas (span), :host, ::before, @media, @include.
@@ -288,16 +330,36 @@ function buildTheme(options) {
       'keyword.control.at-rule.media.scss', 'keyword.control.at-rule.include.scss', 'keyword.control.at-rule.use.scss'], mix(s.keyword, '#FFFFFF', 0.3)),
     t(['support.type.property-name.json'], s.property),
     t(['entity.name.decorator', 'meta.decorator', 'punctuation.decorator'], s.constant, 'italic'),
+    // Anotaciones y atributos de otros lenguajes: @Service (Java), #[derive] (Rust), #[Attr] (PHP), [Attr] (C#).
+    t(['storage.type.annotation', 'punctuation.definition.annotation', 'meta.declaration.annotation',
+      'meta.attribute.rust', 'punctuation.definition.attribute.rust', 'meta.attribute.php', 'meta.attribute.cs'], s.constant, 'italic'),
+    // Directivas del preprocesador de C/C++ (#include, #define) y macros de Rust (println!).
+    t(['keyword.control.directive', 'punctuation.definition.directive', 'meta.preprocessor keyword'], s.keyword),
+    t(['entity.name.function.preprocessor', 'entity.name.function.macro'], s.function),
+    // PHP: el $ forma parte del nombre de la variable.
+    t(['punctuation.definition.variable.php'], c.variable),
+    // Paquetes de Go/Java/Kotlin y módulos de Rust.
+    t(['entity.name.package', 'entity.name.type.package', 'entity.name.module.rust'], s.type),
+    // Tipos primitivos (int, double, f64, bool): como storage.
+    t(['storage.type.primitive', 'support.type.primitive', 'storage.type.built-in', 'entity.name.type.primitive',
+      'storage.type.numeric.go', 'storage.type.boolean.go', 'storage.type.string.go', 'storage.type.core.rust'], s.storage),
     t(['entity.name.namespace', 'entity.name.module'], s.type),
-    t(['punctuation', 'meta.brace', 'punctuation.terminator', 'punctuation.separator'], c.fgDim),
-    t(['markup.heading', 'entity.name.section.markdown'], g, 'bold'),
+    t(['punctuation', 'meta.brace', 'punctuation.separator'], c.fgDim),
+    // Punto y coma: el mismo azul cielo claro del texto.
+    t(['punctuation.terminator'], c.fg),
+    // Comillas del mismo color que el texto que encierran (si no, la regla de puntuación las vuelve grises).
+    t(['punctuation.definition.string'], s.string),
+    t(['punctuation.support.type.property-name', 'punctuation.definition.string.begin.json support.type.property-name',
+      'support.type.property-name.json punctuation'], s.property),
+    t(['punctuation.definition.string.begin.css', 'punctuation.definition.string.end.css'], s.string),
+    t(['markup.heading', 'entity.name.section.markdown'], s.string, 'bold'),
     t(['markup.bold'], c.orange, 'bold'),
     t(['markup.italic'], s.constant, 'italic'),
     t(['markup.inline.raw', 'markup.fenced_code.block'], c.orange),
     t(['markup.underline.link', 'string.other.link'], s.property),
     t(['markup.quote'], c.muted, 'italic'),
     t(['markup.list', 'punctuation.definition.list'], s.keyword),
-    t(['markup.inserted'], g),
+    t(['markup.inserted'], s.string),
     t(['markup.deleted'], c.red),
     t(['markup.changed'], c.orange),
     t(['invalid', 'invalid.illegal'], c.red)
@@ -309,12 +371,18 @@ function buildTheme(options) {
     property: s.property,
     function: s.function,
     method: s.function,
-    class: s.type,
+    // Clases usadas como valor (imports de Angular, new X): azul cielo muy claro; su declaración sigue amarilla.
+    class: s.classReference,
+    'class.declaration': s.type,
+    // Servicios inyectados: private readonly http: HttpClient  /  private readonly http = inject(HttpClient)
+    'parameter.readonly': s.injected,
+    'property.declaration.readonly': s.injected,
+    'property.declaration': s.objectKey,
     interface: { foreground: s.type, italic: true },
     type: s.type,
     enumMember: s.constant,
     namespace: s.type,
-    'variable.readonly': s.constant,
+    'variable.readonly': s.constVariable,
     decorator: s.constant,
     selfKeyword: s.self
   };
