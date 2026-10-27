@@ -85,7 +85,19 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
   .chip { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
   .chip.active { border-color: var(--ui-foreground, var(--vscode-foreground)); }
   .toggle { display: flex; align-items: center; gap: 8px; padding: 5px 0; cursor: pointer; }
-  .toggle input { accent-color: var(--ui-button-background, var(--vscode-button-background)); }
+  /* Casillas del panel: apagadas con el tono del tema; activadas, verde aura brillante. */
+  .toggle input { appearance: none; -webkit-appearance: none; flex-shrink: 0; width: 16px; height: 16px; margin: 0;
+    border-radius: 4px; cursor: pointer; display: grid; place-content: center;
+    background: var(--ui-input-background, var(--vscode-input-background));
+    border: 1px solid var(--ui-input-border, var(--vscode-input-border)); transition: background .15s, box-shadow .15s; }
+  .toggle input::after { content: ''; width: 9px; height: 5px; margin-top: -2px; border: solid transparent;
+    border-width: 0 0 2px 2px; transform: rotate(-45deg); }
+  .toggle input:checked { background: var(--ui-button-background, var(--vscode-button-background));
+    border-color: var(--ui-button-background, var(--vscode-button-background));
+    box-shadow: 0 0 8px color-mix(in srgb, var(--ui-button-background, var(--vscode-button-background)) 55%, transparent); }
+  .toggle input:checked::after { border-color: var(--ui-button-foreground, var(--vscode-button-foreground)); }
+  .toggle input:hover:not(:checked) { border-color: var(--ui-button-background, var(--vscode-button-background)); }
+  .toggle input:focus-visible { outline: 1px solid var(--ui-button-background, var(--vscode-button-background)); outline-offset: 2px; }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   button.btn { padding: 6px 14px; border: none; border-radius: 3px; cursor: pointer; font-size: 13px; font-family: inherit; }
   .primary { background: var(--ui-button-background, var(--vscode-button-background)); color: var(--ui-button-foreground, var(--vscode-button-foreground)); }
@@ -398,7 +410,7 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
       'button-secondaryBackground': mix(bg, v.fg, 0.13), 'button-secondaryForeground': v.fg,
       'button-secondaryHoverBackground': mix(bg, v.fg, 0.2),
       'input-background': mix(bg, '#000000', 0.2), 'input-foreground': mix(v.fg, v.fgDim, 0.5),
-      'input-border': mix(bg, '#FFFFFF', 0.09), 'toolbar-hoverBackground': mix(bg, v.fg, 0.1)
+      'input-border': mix(bg, v.fg, 0.14), 'toolbar-hoverBackground': mix(bg, v.fg, 0.1)
     };
     Object.keys(ui).forEach(function (k) { b.setProperty('--ui-' + k, ui[k]); });
     b.setProperty('--g1', state.accentColor); b.setProperty('--g2', state.syntax.property);
