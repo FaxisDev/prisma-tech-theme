@@ -3,4 +3,5 @@
 .gitignore
 *.vsix
 images/icon.svg
+images/screenshot-*.png
 node_modules/**

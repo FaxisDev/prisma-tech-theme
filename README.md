@@ -5,36 +5,44 @@
 <h1 align="center">Prisma-Tech</h1>
 
 <p align="center">
-  Tema oscuro prismático para VS Code, con un panel visual para personalizar cada color en vivo.
+  A prismatic dark theme for VS Code, with a visual panel to customize every color live.
 </p>
 
 ---
 
-**Prisma-Tech** mezcla la energía de **Aura** (verde `#61FFCA`, índigo y tonos brillantes) con la estructura de **Material**, sobre un fondo azul petróleo `#1B2126`. Cada tipo de código tiene su propio tono del espectro: verde limón para strings, índigo para keywords, amarillo para clases, rosa mexicano para claves de objetos, azul mar para booleanos… y todos los blancos llevan un toque de azul cielo.
+**Prisma-Tech** blends the energy of **Aura** (aura green `#61FFCA`, indigo and bright tones) with the structure of **Material**, on a deep petrol-blue background `#1B2126`. Every kind of code gets its own hue of the spectrum: lime green for strings, indigo for keywords, yellow for types, Mexican pink for object keys, sea blue for booleans and class names… and every "white" carries a touch of sky blue.
 
-## Instalación
+![Prisma-Tech with TypeScript](images/screenshot-typescript.png)
 
-1. Abre la vista de **Extensiones** (`Cmd + Shift + X` / `Ctrl + Shift + X`).
-2. Busca **Prisma-Tech** e instálalo.
-3. Elige el tema con `Cmd + K` `Cmd + T` (`Ctrl + K` `Ctrl + T`) → **Prisma-Tech**.
+![Prisma-Tech with SCSS](images/screenshot-scss.png)
 
-## Personalízalo a tu gusto
+## Installation
 
-Haz clic en el icono de **Prisma-Tech** en la barra de actividad. En la barra lateral aparecen los controles y, en el editor, una vista previa a tamaño completo.
+1. Open the **Extensions** view (`Cmd + Shift + X` / `Ctrl + Shift + X`).
+2. Search for **Prisma-Tech** and install it.
+3. Pick the theme with `Cmd + K` `Cmd + T` (`Ctrl + K` `Ctrl + T`) → **Prisma-Tech**.
 
-- **Todos los colores editables**: acento, fondo y 18 colores de sintaxis (strings, keywords, funciones, clases, parámetros, booleanos, variables `const`, claves de objetos, servicios inyectados…).
-- **Cambios en vivo, sin recargar**: VS Code aplica cada color mientras lo mueves. Si sales sin guardar, vuelven los colores guardados.
-- **Vista previa en 12 lenguajes**: TypeScript, JavaScript, Dart, Python, SCSS, HTML, JSON, PHP, Java, C++, Go y Rust, cada uno con su icono.
-- **Clic en el código**: haz clic en cualquier palabra de la vista previa y la barra lateral salta al color que la controla.
-- **Contraste a la vista**: cada color muestra su contraste contra el fondo y avisa con ⚠ si se lee mal.
-- **✦ Modo prisma**: reparte los colores de sintaxis por todo el espectro a partir de tu acento.
-- **Cursivas y texto brillante**: activa o desactiva cursivas en comentarios, keywords y parámetros, o sube el contraste del texto.
+## Make it yours
 
-El fondo de paneles, barra lateral, bordes, números de línea y terminal se calcula automáticamente a partir del fondo que elijas.
+Click the **Prisma-Tech** icon in the activity bar. The controls open in the sidebar and a full-size preview opens in the editor.
 
-### Desde Ajustes
+![The Prisma-Tech customizer](images/screenshot-customizer.png)
 
-También puedes configurarlo en `settings.json`. Solo escribe lo que quieras cambiar:
+- **Every color is editable**: accent, background and 18 syntax colors (strings, keywords, functions, types, parameters, booleans, `const` variables, object keys, injected services…).
+- **Live changes, no reload**: VS Code applies each color as you move it. Leave without saving and your saved colors come back.
+- **Preview in 12 languages**: TypeScript, JavaScript, Dart, Python, SCSS, HTML, JSON, PHP, Java, C++, Go and Rust, each with its own icon.
+- **Click the code**: click any word in the preview and the sidebar jumps to the color that controls it.
+- **Contrast at a glance**: every color shows its contrast against the background and warns with ⚠ when it's hard to read.
+- **✦ Prism mode**: spreads the syntax colors across the whole spectrum, starting from your accent.
+- **Italics and bright text**: toggle italics for comments, keywords and parameters, or boost text contrast.
+
+Panels, sidebar, borders, line numbers and the terminal are derived automatically from the background you choose.
+
+> The customizer panel is currently in Spanish.
+
+### From Settings
+
+You can also configure it in `settings.json`. Only write what you want to change:
 
 ```json
 {
@@ -52,68 +60,68 @@ También puedes configurarlo en `settings.json`. Solo escribe lo que quieras cam
 }
 ```
 
-### Comandos
+### Commands
 
-| Comando | Qué hace |
+| Command | What it does |
 |---|---|
-| **Prisma-Tech: Personalizar tema** | Abre el panel visual en una pestaña |
-| **Prisma-Tech: Restablecer colores originales** | Vuelve a los colores de fábrica |
-| **Prisma-Tech: Abrir ajustes del tema** | Abre la sección `prismaTech` en Ajustes |
+| **Prisma-Tech: Personalizar tema** | Opens the visual panel in a tab |
+| **Prisma-Tech: Restablecer colores originales** | Restores the default colors |
+| **Prisma-Tech: Abrir ajustes del tema** | Opens the `prismaTech` section in Settings |
 
-## Paleta
+## Palette
 
-| Uso | Color |
+| Use | Color |
 |---|---|
-| Fondo del editor | `#1B2126` |
-| Acento (cursor, selección, iconos activos, badges) | `#61FFCA` |
-| Texto y variables | `#C4EAFF` |
-| Strings y números | `#CCFF4D` |
+| Editor background | `#1B2126` |
+| Accent (cursor, selection, active icons, badges) | `#61FFCA` |
+| Text and variables | `#C4EAFF` |
+| Strings and numbers | `#CCFF4D` |
 | Keywords (`if`, `return`, `import`) | `#ACA0FF` |
 | `export` / `class` | `#FF4D5E` |
-| Storage (`class`, `function`) | `#C8B9FF` |
+| Storage (`function`, `interface`) | `#C8B9FF` |
 | `const` / `let` / `var` / `constructor` | `#FFA31A` |
-| Variables `const` | `#FF3B4E` |
-| Funciones y métodos | `#6E9CFF` |
-| Propiedades | `#5CDFFF` |
-| Claves de objetos (`severity:`) | `#FF6EB6` |
-| Nombre de la clase declarada | `#3BA9F5` |
-| Clases y tipos | `#FFD21F` |
+| `const` variables | `#FF3B4E` |
+| Functions and methods | `#6E9CFF` |
+| Properties | `#5CDFFF` |
+| Object keys (`severity:`) | `#FF6EB6` |
+| Declared class name | `#3BA9F5` |
+| Types and interfaces | `#FFD21F` |
 | `this` / `self` / `super` | `#FFD21F` |
-| Servicios inyectados (`http`) | `#9AD1FF` |
-| Booleanos (`true`, `false`) | `#3BA9F5` |
-| Constantes (`null`, enums) | `#F77BFF` |
-| Tags HTML / JSX | `#FF5370` |
-| Operadores | `#5ED3FF` |
-| Comentarios | `#5C6B75` |
+| Injected services (`http`) | `#9AD1FF` |
+| Booleans (`true`, `false`) | `#3BA9F5` |
+| Constants (`null`, enums) | `#F77BFF` |
+| HTML / JSX tags | `#FF5370` |
+| Operators | `#5ED3FF` |
+| Comments | `#5C6B75` |
 
-**CSS y SCSS** tienen sus propios matices: clases en azul mar, `:root` / `body` / `html` en rojo cereza, declaraciones de variables en azul cielo claro y colores hexadecimales entre azul cielo y blanco.
+**CSS and SCSS** have their own accents: classes in sea blue, `:root` / `body` / `html` in cherry red, variable declarations in light sky blue and hex colors between sky blue and white.
 
-## Integraciones
+## Integrations
 
-Prisma-Tech también colorea, con la misma paleta:
+Prisma-Tech also colors, with the same palette:
 
-- La interfaz moderna de VS Code (barra de actividad, bordes entre secciones, buscador, casillas, botones).
-- El chat de Copilot y de los agentes.
-- **GitLens**: blame en línea, iconos de commits, ramas y pull requests, y el gráfico de commits.
-- Las vistas web de otras extensiones que usan los colores del tema (por ejemplo, NPM Visual Manager).
+- VS Code's modern UI (activity bar, section borders, find widget, checkboxes, buttons).
+- The Copilot and agents chat.
+- **GitLens**: inline blame, commit, branch and pull request icons, and the commit graph.
+- Web views from other extensions that use theme colors (for example, NPM Visual Manager).
 
-## Desarrollo
+## Development
 
 ```bash
 npm run build
 ```
 
-Regenera `themes/prisma-tech-color-theme.json` con los colores por defecto. El generador está en `src/generator.js`, el panel en `src/customizer.js` y la extensión en `src/extension.js`. Para probarlo, abre la carpeta en VS Code y usa **Ejecutar → Ejecutar sin depuración** (`Ctrl + F5`).
+Regenerates `themes/prisma-tech-color-theme.json` with the default colors. The generator lives in `src/generator.js`, the panel in `src/customizer.js` and the extension in `src/extension.js`. To try it, open the folder in VS Code and use **Run → Run Without Debugging** (`Ctrl + F5`).
 
-### Publicar una nueva versión
+### Publishing a new version
 
-El repositorio publica en el Marketplace con GitHub Actions (`.github/workflows/publish.yml`):
+The repository publishes to the Marketplace with GitHub Actions (`.github/workflows/publish.yml`):
 
-1. Sube `version` en `package.json` y anota los cambios en `CHANGELOG.md`.
-2. Haz commit y crea la etiqueta: `git tag v0.3.1 && git push origin main --tags`.
+1. Bump `version` in `package.json` and note the changes in `CHANGELOG.md`.
+2. Commit and tag it: `git tag v0.3.3 && git push origin main --tags`.
 
-La acción regenera el tema, empaqueta, publica con el secreto `VSCE_PAT` y adjunta el `.vsix` a la release de GitHub.
+The action rebuilds the theme, packages it, publishes it with the `VSCE_PAT` secret and attaches the `.vsix` to the GitHub release.
 
-## Licencia
+## License
 
 [MIT](LICENSE)

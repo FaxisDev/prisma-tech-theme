@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+- Nuevo icono en alta resolución (512 × 512).
+- README en inglés con capturas del tema y del panel de personalización.
+
 ## 0.3.1
 - TypeScript/JavaScript: `export` y `class` en rojo, y el nombre de la clase declarada en azul mar.
 - `const`, `let`, `var` y `constructor` en un naranja más brillante (`#FFA31A`).
