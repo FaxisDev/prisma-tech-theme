@@ -135,6 +135,12 @@ function buildTheme(options) {
     orange: '#FFA94D',
     // Azul mar para las clases de CSS/SCSS (.invade-panel).
     cssClass: '#3BA9F5',
+    // Declaración de variables en CSS/SCSS (--interface-green:, $accent:): azul cielo claro.
+    cssVarDecl: '#87CEFA',
+    // Selectores de etiqueta y pseudoclases en CSS/SCSS: rojo cereza intenso.
+    cssSelector: '#FF2D5C',
+    // Colores hexadecimales (#61FFCA): entre azul cielo y blanco.
+    hexColor: mix('#87CEEB', '#FFFFFF', 0.35),
     // Naranja intenso para const/let/var y constructor.
     declare: '#FF9100'
   };
@@ -165,7 +171,8 @@ function buildTheme(options) {
     'textSeparator.foreground': c.borderLight, 'textPreformat.background': mix(bg, c.fg, 0.08),
     'textPreformat.border': c.borderLight,
     'badge.background': g, 'badge.foreground': c.bgDarker,
-    'progressBar.background': g, 'scrollbar.shadow': '#00000000',
+    // Barras de progreso: punto medio entre verde aura y azul celeste (VS Code solo admite un color).
+    'progressBar.background': mix(g, '#5CDFFF', 0.5), 'scrollbar.shadow': '#00000000',
     'scrollbarSlider.background': c.muted + '33', 'scrollbarSlider.hoverBackground': c.muted + '55',
     'scrollbarSlider.activeBackground': g + '55',
     // Texto de campos y áreas de texto: más suave que el texto normal, en la misma gama azulada del fondo.
@@ -396,13 +403,20 @@ function buildTheme(options) {
     t(['punctuation.definition.tag'], s.operator),
     t(['entity.other.attribute-name.class.css', 'entity.other.attribute-name.class.scss', 'entity.other.attribute-name.class.less'], c.cssClass),
     t(['entity.other.attribute-name.id.css'], s.parameter),
-    // Variables de CSS/SCSS (--mi-var, $mi-var): el mismo azul cielo claro del texto.
-    t(['variable.css', 'variable.argument.css', 'support.type.custom-property', 'variable.scss', 'variable.other.less'], c.variable),
+    // Variables de CSS/SCSS: al declararlas (--interface-green:, $accent) en azul cielo claro;
+    // al usarlas dentro de var(--x), en el azul cielo claro del texto.
+    t(['variable.css', 'support.type.custom-property', 'variable.scss', 'variable.other.less'], c.cssVarDecl),
+    t(['variable.argument.css'], c.variable),
+    // Colores hexadecimales (#61FFCA) y su #: entre azul cielo y blanco.
+    t(['constant.other.color', 'constant.other.rgb-value', 'constant.other.color.rgb-value',
+      'punctuation.definition.constant.css', 'punctuation.definition.constant.scss'], c.hexColor),
     t(['support.type.property-name.css'], s.property),
     t(['support.constant.property-value.css', 'keyword.other.unit'], s.number),
-    // Morado más claro en CSS/SCSS: etiquetas (span), :host, ::before, @media, @include.
-    t(['entity.name.tag.css', 'entity.name.tag.scss', 'entity.other.attribute-name.pseudo-class.css',
-      'entity.other.attribute-name.pseudo-element.css', 'keyword.control.at-rule.css', 'keyword.control.at-rule.scss',
+    // Selectores de etiqueta y pseudoclases en CSS/SCSS (:root, body, html, :host, :hover): rojo cereza intenso.
+    t(['entity.name.tag.css', 'entity.name.tag.scss', 'entity.name.tag.reference.scss',
+      'entity.other.attribute-name.pseudo-class.css', 'entity.other.attribute-name.pseudo-class.scss'], c.cssSelector),
+    // Morado más claro en CSS/SCSS: ::before, @media, @include, @use.
+    t(['entity.other.attribute-name.pseudo-element.css', 'keyword.control.at-rule.css', 'keyword.control.at-rule.scss',
       'keyword.control.at-rule.media.scss', 'keyword.control.at-rule.include.scss', 'keyword.control.at-rule.use.scss'], mix(s.keyword, '#FFFFFF', 0.3)),
     t(['support.type.property-name.json'], s.property),
     t(['entity.name.decorator', 'meta.decorator', 'punctuation.decorator'], s.constant, 'italic'),

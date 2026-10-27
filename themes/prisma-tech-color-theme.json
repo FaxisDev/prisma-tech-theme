@@ -44,7 +44,7 @@
     "textPreformat.border": "#333D44",
     "badge.background": "#61FFCA",
     "badge.foreground": "#121619",
-    "progressBar.background": "#61FFCA",
+    "progressBar.background": "#5FEFE5",
     "scrollbar.shadow": "#00000000",
     "scrollbarSlider.background": "#5F717D33",
     "scrollbarSlider.hoverBackground": "#5F717D55",
@@ -702,13 +702,32 @@
     {
       "scope": [
         "variable.css",
-        "variable.argument.css",
         "support.type.custom-property",
         "variable.scss",
         "variable.other.less"
       ],
       "settings": {
+        "foreground": "#87CEFA"
+      }
+    },
+    {
+      "scope": [
+        "variable.argument.css"
+      ],
+      "settings": {
         "foreground": "#C4EAFF"
+      }
+    },
+    {
+      "scope": [
+        "constant.other.color",
+        "constant.other.rgb-value",
+        "constant.other.color.rgb-value",
+        "punctuation.definition.constant.css",
+        "punctuation.definition.constant.scss"
+      ],
+      "settings": {
+        "foreground": "#B1DFF2"
       }
     },
     {
@@ -732,7 +751,16 @@
       "scope": [
         "entity.name.tag.css",
         "entity.name.tag.scss",
+        "entity.name.tag.reference.scss",
         "entity.other.attribute-name.pseudo-class.css",
+        "entity.other.attribute-name.pseudo-class.scss"
+      ],
+      "settings": {
+        "foreground": "#FF2D5C"
+      }
+    },
+    {
+      "scope": [
         "entity.other.attribute-name.pseudo-element.css",
         "keyword.control.at-rule.css",
         "keyword.control.at-rule.scss",
