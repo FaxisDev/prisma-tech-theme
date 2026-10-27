@@ -1,0 +1,188 @@
+{
+  "name": "prisma-tech-theme",
+  "displayName": "Prisma-Tech",
+  "description": "Tema oscuro personalizable que mezcla los colores de Aura (verde aura y tonos brillantes) con Material, sobre un fondo #1B2126.",
+  "version": "0.2.0",
+  "publisher": "arfaxadzadot",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "prisma",
+    "aura",
+    "material",
+    "green",
+    "customizable"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "scripts": {
+    "build": "node src/build.js"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Prisma-Tech",
+        "uiTheme": "vs-dark",
+        "path": "./themes/prisma-tech-color-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "prismaTech.customize",
+        "title": "Personalizar tema",
+        "category": "Prisma-Tech"
+      },
+      {
+        "command": "prismaTech.reset",
+        "title": "Restablecer colores originales",
+        "category": "Prisma-Tech"
+      },
+      {
+        "command": "prismaTech.openSettings",
+        "title": "Abrir ajustes del tema",
+        "category": "Prisma-Tech"
+      }
+    ],
+    "configuration": {
+      "title": "Prisma-Tech",
+      "properties": {
+        "prismaTech.accentColor": {
+          "type": "string",
+          "default": "#61FFCA",
+          "format": "color-hex",
+          "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+          "order": 0,
+          "markdownDescription": "Color de acento: cursor, pestaña activa, botones, barra de actividad y selección."
+        },
+        "prismaTech.background": {
+          "type": "string",
+          "default": "#1B2126",
+          "format": "color-hex",
+          "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+          "order": 1,
+          "markdownDescription": "Fondo del editor. Los paneles, la barra lateral, los bordes y la terminal se calculan automáticamente a partir de este color."
+        },
+        "prismaTech.italicComments": {
+          "type": "boolean",
+          "default": true,
+          "order": 2,
+          "description": "Mostrar los comentarios en cursiva."
+        },
+        "prismaTech.italicKeywords": {
+          "type": "boolean",
+          "default": true,
+          "order": 3,
+          "description": "Mostrar en cursiva las keywords de control (import, export, return, if) y this/self."
+        },
+        "prismaTech.italicParameters": {
+          "type": "boolean",
+          "default": true,
+          "order": 4,
+          "description": "Mostrar los parámetros de funciones en cursiva."
+        },
+        "prismaTech.brightText": {
+          "type": "boolean",
+          "default": false,
+          "order": 5,
+          "description": "Texto más brillante y con más contraste en el editor y la interfaz."
+        },
+        "prismaTech.syntax": {
+          "type": "object",
+          "order": 6,
+          "default": {},
+          "additionalProperties": false,
+          "markdownDescription": "Colores de sintaxis personalizados. Solo escribe los que quieras cambiar. Para editarlos de forma visual usa el comando **Prisma-Tech: Personalizar tema**.",
+          "properties": {
+            "comment": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Comentarios (por defecto #5C6B75)"
+            },
+            "string": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Strings (por defecto #61FFCA)"
+            },
+            "keyword": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Keywords (if, return, import) (por defecto #A277FF)"
+            },
+            "storage": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Storage (const, class, function) (por defecto #C792EA)"
+            },
+            "function": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Funciones y métodos (por defecto #82AAFF)"
+            },
+            "property": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Propiedades (por defecto #82E2FF)"
+            },
+            "type": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Clases y tipos (por defecto #FFCB6B)"
+            },
+            "parameter": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Parámetros (por defecto #FFCA85)"
+            },
+            "number": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Números (por defecto #F78C6C)"
+            },
+            "constant": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Constantes y booleanos (por defecto #F694FF)"
+            },
+            "tag": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Tags HTML / JSX (por defecto #F07178)"
+            },
+            "operator": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "Operadores (por defecto #89DDFF)"
+            },
+            "self": {
+              "type": "string",
+              "format": "color-hex",
+              "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+              "description": "this / self / super (por defecto #FF6767)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
