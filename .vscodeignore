@@ -1,3 +1,5 @@
 .vscode/**
 .gitignore
 *.vsix
+images/icon.svg
+node_modules/**

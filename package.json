@@ -1,10 +1,23 @@
 {
   "name": "prisma-tech-theme",
   "displayName": "Prisma-Tech",
-  "description": "Tema oscuro personalizable que mezcla los colores de Aura (verde aura y tonos brillantes) con Material, sobre un fondo #1B2126.",
-  "version": "0.2.0",
-  "publisher": "arfaxadzadot",
+  "description": "Tema oscuro prismático con panel visual para personalizar cada color en vivo: mezcla Aura y Material sobre un fondo #1B2126.",
+  "version": "0.3.0",
+  "publisher": "ArfaxadZadot",
   "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1B2126",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FaxisDev/prisma-tech-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/FaxisDev/prisma-tech-theme/issues"
+  },
+  "homepage": "https://github.com/FaxisDev/prisma-tech-theme#readme",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -12,13 +25,17 @@
     "Themes"
   ],
   "keywords": [
-    "theme",
-    "dark",
-    "prisma",
+    "angular",
     "aura",
-    "material",
+    "customizable",
+    "dark",
     "green",
-    "customizable"
+    "material",
+    "prism",
+    "prisma",
+    "prismatic",
+    "theme",
+    "theme customizer"
   ],
   "main": "./src/extension.js",
   "activationEvents": [

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0
+- Sección **Prisma-Tech** en la barra de actividad: controles en la barra lateral y vista previa a tamaño completo en el editor.
+- Vista previa en 12 lenguajes (TypeScript, JavaScript, Dart, Python, SCSS, HTML, JSON, PHP, Java, C++, Go y Rust) con iconos.
+- Clic en el código para saltar a su color, indicador de contraste y botón **Modo prisma**.
+- Los cambios se aplican en vivo sin recargar la ventana.
+- Nueva paleta más intensa y nuevos colores editables: variables `const`, clases usadas, servicios inyectados, booleanos y claves de objetos.
+- Soporte de la interfaz moderna de VS Code, chat de Copilot, GitLens, buscador, casillas y botones.
+- Reglas de color para Java, PHP, C++, Go, Rust, Dart, CSS y SCSS.
+
 ## 0.2.0
 - Prisma-Tech y Prisma-Tech Bright se unen en un solo tema: **Prisma-Tech**.
 - Nueva opción `prismaTech.brightText` ("Texto brillante") en Ajustes y en el panel de personalización.
