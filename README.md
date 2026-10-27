@@ -103,6 +103,15 @@ npm run build
 
 Regenera `themes/prisma-tech-color-theme.json` con los colores por defecto. El generador está en `src/generator.js`, el panel en `src/customizer.js` y la extensión en `src/extension.js`. Para probarlo, abre la carpeta en VS Code y usa **Ejecutar → Ejecutar sin depuración** (`Ctrl + F5`).
 
+### Publicar una nueva versión
+
+El repositorio publica en el Marketplace con GitHub Actions (`.github/workflows/publish.yml`):
+
+1. Sube `version` en `package.json` y anota los cambios en `CHANGELOG.md`.
+2. Haz commit y crea la etiqueta: `git tag v0.3.1 && git push origin main --tags`.
+
+La acción regenera el tema, empaqueta, publica con el secreto `VSCE_PAT` y adjunta el `.vsix` a la release de GitHub.
+
 ## Licencia
 
 [MIT](LICENSE)
