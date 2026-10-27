@@ -265,7 +265,9 @@ function buildTheme(options) {
     'panel.background': c.bgDark, 'panel.border': c.border,
     'panelTitle.activeForeground': c.fg, 'panelTitle.activeBorder': g, 'panelTitle.inactiveForeground': c.muted,
     'statusBar.background': c.bgDark, 'statusBar.foreground': c.fgDim, 'statusBar.border': c.border,
-    'statusBar.debuggingBackground': s.keyword, 'statusBar.debuggingForeground': '#FFFFFF',
+    // Barra de estado en depuración: el fondo del tema apenas más claro, en lugar de lila.
+    'statusBar.debuggingBackground': mix(bg, c.fg, 0.1), 'statusBar.debuggingForeground': c.fg,
+    'statusBar.debuggingBorder': mix(bg, c.fg, 0.1),
     'statusBar.noFolderBackground': c.bgDark, 'statusBarItem.hoverBackground': c.bgLight,
     'statusBarItem.remoteBackground': g, 'statusBarItem.remoteForeground': c.bgDarker,
     'statusBarItem.prominentBackground': c.bgLight,

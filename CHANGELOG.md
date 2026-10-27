@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.3
+- Barra de estado en modo depuración con el fondo del tema ligeramente más claro, en lugar de lila.
+
 ## 0.3.2
 - Nuevo icono en alta resolución (512 × 512).
 - README en inglés con capturas del tema y del panel de personalización.
