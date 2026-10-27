@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+- TypeScript/JavaScript: `export` y `class` en rojo, y el nombre de la clase declarada en azul mar.
+- `const`, `let`, `var` y `constructor` en un naranja más brillante (`#FFA31A`).
+- CSS/SCSS: declaración de variables en azul cielo claro, colores hexadecimales entre azul cielo y blanco, y `:root` / `body` / `html` en rojo cereza.
+- Barra de progreso entre verde aura y azul celeste.
+
 ## 0.3.0
 - Sección **Prisma-Tech** en la barra de actividad: controles en la barra lateral y vista previa a tamaño completo en el editor.
 - Vista previa en 12 lenguajes (TypeScript, JavaScript, Dart, Python, SCSS, HTML, JSON, PHP, Java, C++, Go y Rust) con iconos.

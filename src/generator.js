@@ -24,20 +24,20 @@ const DEFAULTS = Object.freeze({
     classReference: '#C4EAFF',
     injected: '#9AD1FF',
     parameter: '#C4EAFF',
-    number: '#3BA9F5',
+    number: '#CCFF4D',
     constant: '#F77BFF',
     boolean: '#3BA9F5',
-    constVariable: '#F77BFF',
+    constVariable: '#FF3B4E',
     tag: '#FF5370',
     operator: '#5ED3FF',
-    self: '#3BA9F5'
+    self: '#FFD21F'
   })
 });
 
 const SYNTAX_LABELS = Object.freeze({
   comment: 'Comentarios',
   string: 'Strings',
-  keyword: 'Keywords (if, return, await)',
+  keyword: 'Keywords (if, return, import)',
   storage: 'Storage (const, class, function)',
   function: 'Funciones y métodos',
   property: 'Propiedades',
@@ -139,13 +139,13 @@ function buildTheme(options) {
     cssVarDecl: '#87CEFA',
     // Selectores de etiqueta y pseudoclases en CSS/SCSS: rojo cereza intenso.
     cssSelector: '#FF2D5C',
-    // Módulos y clases: import/export/from/class en rojo y el nombre de la clase en azul mar.
+    // export class Foo: las palabras export/class en rojo y el nombre de la clase en azul mar.
     exportClass: '#FF4D5E',
     classDecl: '#3BA9F5',
     // Colores hexadecimales (#61FFCA): entre azul cielo y blanco.
     hexColor: mix('#87CEEB', '#FFFFFF', 0.35),
     // Naranja intenso para const/let/var y constructor.
-    declare: '#FF9100'
+    declare: '#FFA31A'
   };
   const italic = (on) => (on ? 'italic' : '');
 
@@ -397,12 +397,8 @@ function buildTheme(options) {
     t(['entity.name.type', 'entity.name.class', 'support.class', 'support.type', 'entity.other.inherited-class'], s.type),
     // Nombre de la clase al declararla (export class Foo): azul mar.
     t(['entity.name.type.class'], c.classDecl),
-    // Módulos en TS/JS (import, export, from, default, as) y class: rojo.
-    t(['keyword.control.import.ts', 'keyword.control.import.tsx', 'keyword.control.import.js', 'keyword.control.import.jsx',
-      'keyword.control.export.ts', 'keyword.control.export.tsx', 'keyword.control.export.js', 'keyword.control.export.jsx',
-      'keyword.control.from.ts', 'keyword.control.from.tsx', 'keyword.control.from.js', 'keyword.control.from.jsx',
-      'keyword.control.default.ts', 'keyword.control.default.tsx', 'keyword.control.default.js', 'keyword.control.default.jsx',
-      'keyword.control.as.ts', 'keyword.control.as.tsx', 'keyword.control.as.js', 'keyword.control.as.jsx'], c.exportClass, italic(o.italicKeywords)),
+    // export y class en TS/JS: rojo.
+    t(['keyword.control.export.ts', 'keyword.control.export.tsx', 'keyword.control.export.js', 'keyword.control.export.jsx'], c.exportClass, italic(o.italicKeywords)),
     t(['storage.type.class.ts', 'storage.type.class.tsx', 'storage.type.class.js', 'storage.type.class.jsx'], c.exportClass),
     t(['entity.name.type.interface', 'entity.name.type.alias'], s.type, 'italic'),
     t(['variable.other.property', 'variable.other.object.property', 'support.type.property-name'], s.property),
@@ -423,8 +419,7 @@ function buildTheme(options) {
     t(['constant.other.color', 'constant.other.rgb-value', 'constant.other.color.rgb-value',
       'punctuation.definition.constant.css', 'punctuation.definition.constant.scss'], c.hexColor),
     t(['support.type.property-name.css'], s.property),
-    // Valores y unidades de CSS (block, 8px): en el verde limón de los strings.
-    t(['support.constant.property-value.css', 'keyword.other.unit'], s.string),
+    t(['support.constant.property-value.css', 'keyword.other.unit'], s.number),
     // Selectores de etiqueta y pseudoclases en CSS/SCSS (:root, body, html, :host, :hover): rojo cereza intenso.
     t(['entity.name.tag.css', 'entity.name.tag.scss', 'entity.name.tag.reference.scss',
       'entity.other.attribute-name.pseudo-class.css', 'entity.other.attribute-name.pseudo-class.scss'], c.cssSelector),
