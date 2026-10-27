@@ -24,7 +24,7 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
   body {
     margin: 0; padding: 24px 28px 40px;
     font-family: var(--vscode-font-family); font-size: 13px;
-    color: var(--vscode-foreground); background: var(--vscode-editor-background);
+    color: var(--ui-foreground, var(--vscode-foreground)); background: var(--ui-editor-background, var(--vscode-editor-background));
   }
   h1 { font-size: 20px; margin: 0 0 4px; font-weight: 600; }
   /* Título prismático: el degradado se desplaza y un halo del color de acento respira. */
@@ -39,12 +39,12 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
   }
   body.no-glow h1 .prism { animation: none; filter: none; }
   @media (prefers-reduced-motion: reduce) { h1 .prism { animation: none; filter: none; } }
-  .sub { color: var(--vscode-descriptionForeground); margin: 0 0 22px; }
+  .sub { color: var(--ui-descriptionForeground, var(--vscode-descriptionForeground)); margin: 0 0 22px; }
   .layout { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 28px; align-items: start; }
   @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
   /* Barra lateral: márgenes más chicos y el mismo fondo que la barra. */
   @media (max-width: 480px) {
-    body { padding: 12px 12px 24px; background: var(--vscode-sideBar-background); }
+    body { padding: 12px 12px 24px; background: var(--ui-sideBar-background, var(--vscode-sideBar-background)); }
     h1 { font-size: 16px; }
     .sub { margin-bottom: 16px; }
     .layout { gap: 16px; }
@@ -54,44 +54,45 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
   }
   section { margin-bottom: 22px; }
   h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 10px;
-    color: var(--vscode-descriptionForeground); font-weight: 600; }
+    color: var(--ui-descriptionForeground, var(--vscode-descriptionForeground)); font-weight: 600; }
   .row { display: grid; grid-template-columns: 1fr auto 84px 36px 26px; gap: 8px; align-items: center; padding: 5px 0;
     border-radius: 4px; transition: background .3s; }
-  .row.flash { background: color-mix(in srgb, var(--vscode-button-background) 22%, transparent); }
+  .row.flash { background: color-mix(in srgb, var(--ui-button-background, var(--vscode-button-background)) 22%, transparent); }
   /* Contraste del color contra el fondo del editor. */
-  .cr { font-size: 10.5px; text-align: center; border-radius: 3px; padding: 2px 0; color: var(--vscode-descriptionForeground);
+  .cr { font-size: 10.5px; text-align: center; border-radius: 3px; padding: 2px 0; color: var(--ui-descriptionForeground, var(--vscode-descriptionForeground));
     font-variant-numeric: tabular-nums; }
-  .cr.low { color: var(--vscode-errorForeground); background: color-mix(in srgb, var(--vscode-errorForeground) 14%, transparent); }
+  .cr.low { color: var(--ui-errorForeground, var(--vscode-errorForeground)); background: color-mix(in srgb, var(--ui-errorForeground, var(--vscode-errorForeground)) 14%, transparent); }
   .hint { display: none; margin: 0 0 10px; padding: 6px 8px; border-radius: 4px; font-size: 12px;
-    background: color-mix(in srgb, var(--vscode-button-background) 14%, transparent); }
+    background: color-mix(in srgb, var(--ui-button-background, var(--vscode-button-background)) 14%, transparent); }
   .hint.show { display: block; }
   .section-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
   .section-head h2 { margin: 0; }
   button.small { padding: 3px 9px; font-size: 11.5px; }
   .row label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  input[type=color] { width: 30px; height: 24px; padding: 0; border: 1px solid var(--vscode-input-border, transparent);
+  input[type=color] { width: 30px; height: 24px; padding: 0; border: 1px solid var(--ui-input-border, var(--vscode-input-border, transparent));
     border-radius: 4px; background: none; cursor: pointer; }
   input[type=color]::-webkit-color-swatch-wrapper { padding: 2px; }
   input[type=color]::-webkit-color-swatch { border: none; border-radius: 2px; }
   input[type=text] { width: 100%; padding: 4px 6px; font-family: var(--vscode-editor-font-family); font-size: 12px;
-    color: var(--vscode-input-foreground); background: var(--vscode-input-background);
-    border: 1px solid var(--vscode-input-border, transparent); border-radius: 3px; text-transform: uppercase; }
+    color: var(--ui-input-foreground, var(--vscode-input-foreground)); background: var(--ui-input-background, var(--vscode-input-background));
+    border: 1px solid var(--ui-input-border, var(--vscode-input-border, transparent)); border-radius: 3px; text-transform: uppercase; }
   input[type=text].bad { border-color: var(--vscode-inputValidation-errorBorder, #FF4D5E); }
   .undo { width: 26px; height: 24px; padding: 0; border: none; border-radius: 3px; cursor: pointer; font-size: 14px;
-    background: transparent; color: var(--vscode-descriptionForeground); visibility: hidden; }
+    background: transparent; color: var(--ui-descriptionForeground, var(--vscode-descriptionForeground)); visibility: hidden; }
   .undo.show { visibility: visible; }
-  .undo:hover { background: var(--vscode-toolbar-hoverBackground); color: var(--vscode-foreground); }
+  .undo:hover { background: var(--ui-toolbar-hoverBackground, var(--vscode-toolbar-hoverBackground)); color: var(--ui-foreground, var(--vscode-foreground)); }
   .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .chip { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
-  .chip.active { border-color: var(--vscode-foreground); }
+  .chip.active { border-color: var(--ui-foreground, var(--vscode-foreground)); }
   .toggle { display: flex; align-items: center; gap: 8px; padding: 5px 0; cursor: pointer; }
+  .toggle input { accent-color: var(--ui-button-background, var(--vscode-button-background)); }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   button.btn { padding: 6px 14px; border: none; border-radius: 3px; cursor: pointer; font-size: 13px; font-family: inherit; }
-  .primary { background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
-  .primary:hover { background: var(--vscode-button-hoverBackground); }
-  .secondary { background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); }
-  .secondary:hover { background: var(--vscode-button-secondaryHoverBackground); }
-  .status { margin-left: 4px; align-self: center; color: var(--vscode-descriptionForeground); }
+  .primary { background: var(--ui-button-background, var(--vscode-button-background)); color: var(--ui-button-foreground, var(--vscode-button-foreground)); }
+  .primary:hover { background: var(--ui-button-hoverBackground, var(--vscode-button-hoverBackground)); }
+  .secondary { background: var(--ui-button-secondaryBackground, var(--vscode-button-secondaryBackground)); color: var(--ui-button-secondaryForeground, var(--vscode-button-secondaryForeground)); }
+  .secondary:hover { background: var(--ui-button-secondaryHoverBackground, var(--vscode-button-secondaryHoverBackground)); }
+  .status { margin-left: 4px; align-self: center; color: var(--ui-descriptionForeground, var(--vscode-descriptionForeground)); }
   .sticky { position: sticky; top: 16px; }
 
   /* Modos: la barra lateral solo muestra controles; la pestaña del editor solo la vista previa. */
@@ -388,6 +389,18 @@ function getCustomizerHtml(webview, nonce, mode = 'full') {
     Object.keys(vars).forEach(function (k) { p.setProperty(k, vars[k]); });
     // El título toma los colores actuales: acento, propiedades, keywords y constantes.
     var b = document.body.style;
+    // El propio panel (fondo, textos, campos y botones) se pinta con Prisma-Tech aunque el tema activo sea otro.
+    var ui = {
+      'foreground': v.fg, 'editor-background': bg, 'sideBar-background': mix(bg, '#000000', 0.2),
+      'descriptionForeground': v.fgDim, 'errorForeground': '#FF4D5E',
+      'button-background': state.accentColor, 'button-foreground': mix(bg, '#000000', 0.34),
+      'button-hoverBackground': mix(state.accentColor, '#000000', 0.12),
+      'button-secondaryBackground': mix(bg, v.fg, 0.13), 'button-secondaryForeground': v.fg,
+      'button-secondaryHoverBackground': mix(bg, v.fg, 0.2),
+      'input-background': mix(bg, '#000000', 0.2), 'input-foreground': mix(v.fg, v.fgDim, 0.5),
+      'input-border': mix(bg, '#FFFFFF', 0.09), 'toolbar-hoverBackground': mix(bg, v.fg, 0.1)
+    };
+    Object.keys(ui).forEach(function (k) { b.setProperty('--ui-' + k, ui[k]); });
     b.setProperty('--g1', state.accentColor); b.setProperty('--g2', state.syntax.property);
     b.setProperty('--g3', state.syntax.keyword); b.setProperty('--g4', state.syntax.constant);
     $('status').textContent = '';
