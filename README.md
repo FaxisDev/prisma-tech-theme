@@ -1,6 +1,6 @@
 # Prisma-Tech
 
-Tema oscuro y personalizable para VS Code que mezcla la paleta de **Aura** (verde `#61FFCA`, púrpura `#A277FF`, tonos brillantes) con la estructura y colores de sintaxis de **Material**, sobre un fondo `#1B2126`.
+Tema oscuro y personalizable para VS Code que mezcla la paleta de **Aura** (verde `#61FFCA`, púrpura `#ACA0FF`, tonos brillantes) con la estructura y colores de sintaxis de **Material**, sobre un fondo `#1B2126`.
 
 ## Personalización
 
@@ -28,8 +28,8 @@ También puedes editarlo en `settings.json`:
   "prismaTech.italicParameters": true,
   "prismaTech.brightText": false,
   "prismaTech.syntax": {
-    "keyword": "#A277FF",
-    "function": "#82AAFF"
+    "keyword": "#ACA0FF",
+    "function": "#6E9CFF"
   }
 }
 ```
@@ -48,17 +48,17 @@ El fondo de paneles, barra lateral, bordes, números de línea y terminal se cal
 |---|---|
 | Fondo editor | `#1B2126` |
 | Acento / strings | `#61FFCA` |
-| Keywords | `#A277FF` |
-| Storage / atributos | `#C792EA` |
-| Funciones | `#82AAFF` |
-| Propiedades | `#82E2FF` |
-| Clases / tipos | `#FFCB6B` |
-| Parámetros | `#FFCA85` |
-| Números | `#F78C6C` |
-| Constantes | `#F694FF` |
-| Tags | `#F07178` |
-| Operadores | `#89DDFF` |
-| this / self | `#FF6767` |
+| Keywords | `#ACA0FF` |
+| Storage / atributos | `#C8B9FF` |
+| Funciones | `#6E9CFF` |
+| Propiedades | `#5CDFFF` |
+| Clases / tipos | `#FFD23F` |
+| Parámetros | `#FFB86C` |
+| Números | `#FF9A3C` |
+| Constantes | `#F77BFF` |
+| Tags | `#FF5370` |
+| Operadores | `#5ED3FF` |
+| this / self | `#FF4D5E` |
 | Comentarios | `#5C6B75` |
 
 ## Desarrollo

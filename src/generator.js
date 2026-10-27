@@ -15,17 +15,17 @@ const DEFAULTS = Object.freeze({
   syntax: Object.freeze({
     comment: '#5C6B75',
     string: '#61FFCA',
-    keyword: '#A277FF',
-    storage: '#C792EA',
-    function: '#82AAFF',
-    property: '#82E2FF',
-    type: '#FFCB6B',
-    parameter: '#FFCA85',
-    number: '#F78C6C',
-    constant: '#F694FF',
-    tag: '#F07178',
-    operator: '#89DDFF',
-    self: '#FF6767'
+    keyword: '#ACA0FF',
+    storage: '#C8B9FF',
+    function: '#6E9CFF',
+    property: '#5CDFFF',
+    type: '#FFD23F',
+    parameter: '#FFB86C',
+    number: '#FF9A3C',
+    constant: '#F77BFF',
+    tag: '#FF5370',
+    operator: '#5ED3FF',
+    self: '#FF4D5E'
   })
 });
 
@@ -49,8 +49,9 @@ const THEME = Object.freeze({ name: 'Prisma-Tech', file: 'prisma-tech-color-them
 
 // Tonos de texto: suave por defecto, o brillante si "brightText" está activo.
 const TEXT = Object.freeze({
-  soft: Object.freeze({ fg: '#C5CED6', fgDim: '#8A98A3', variable: '#D3DCE3' }),
-  bright: Object.freeze({ fg: '#EDF2F5', fgDim: '#A9B6C0', variable: '#FFFFFF' })
+  // Blancos mezclados con azul cielo (#87CEEB).
+  soft: Object.freeze({ fg: '#C7E2EF', fgDim: '#8FA8B6', variable: '#DBF0F9' }),
+  bright: Object.freeze({ fg: '#E1F3FA', fgDim: '#A9C2CF', variable: '#EDF8FC' })
 });
 
 const HEX = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i;
@@ -104,9 +105,12 @@ function buildTheme(options) {
     bgDarker: mix(bg, '#000000', 0.34),
     bgLight: mix(bg, '#FFFFFF', 0.04),
     bgLighter: mix(bg, '#FFFFFF', 0.09),
-    border: mix(bg, '#000000', 0.38),
+    // Apenas más claro que el fondo: los bordes se notan muy suavemente sin cortar.
+    border: mix(bg, '#FFFFFF', 0.03),
     borderLight: mix(bg, '#FFFFFF', 0.09),
     lineNumber: mix(bg, '#FFFFFF', 0.17),
+    // Iconos no seleccionados de la barra de actividad: pasivos, con el mismo tono del fondo.
+    iconOff: mix(bg, text.fgDim, 0.35),
     guide: mix(bg, '#FFFFFF', 0.05),
     guideActive: mix(bg, '#FFFFFF', 0.17),
     whitespace: mix(bg, '#FFFFFF', 0.08),
@@ -114,8 +118,10 @@ function buildTheme(options) {
     fgDim: text.fgDim,
     variable: text.variable,
     muted: mix(bg, text.fg, 0.4),
-    red: '#FF6767',
-    orange: '#FFCA85'
+    red: '#FF4D5E',
+    orange: '#FFA94D',
+    // Verde pino para las clases de CSS/SCSS: más profundo que el verde aura.
+    pine: '#4AEB9E'
   };
   const italic = (on) => (on ? 'italic' : '');
 
@@ -125,7 +131,9 @@ function buildTheme(options) {
     'icon.foreground': c.fgDim, 'textLink.foreground': g, 'textLink.activeForeground': s.property,
     'button.background': g, 'button.foreground': c.bgDarker, 'button.hoverBackground': mix(g, '#000000', 0.12),
     'button.secondaryBackground': c.bgLighter, 'button.secondaryForeground': c.fg,
-    'badge.background': s.keyword, 'badge.foreground': '#FFFFFF',
+    'button.secondaryHoverBackground': mix(c.bgLighter, '#FFFFFF', 0.06),
+    'widget.border': c.borderLight, 'toolbar.hoverBackground': c.bgLighter,
+    'badge.background': g, 'badge.foreground': c.bgDarker,
     'progressBar.background': g, 'scrollbar.shadow': '#00000000',
     'scrollbarSlider.background': c.muted + '33', 'scrollbarSlider.hoverBackground': c.muted + '55',
     'scrollbarSlider.activeBackground': g + '55',
@@ -133,9 +141,19 @@ function buildTheme(options) {
     'input.placeholderForeground': c.muted, 'inputOption.activeBorder': g, 'inputOption.activeBackground': g + '26',
     'dropdown.background': c.bgDark, 'dropdown.border': c.borderLight, 'dropdown.foreground': c.fg,
     'checkbox.background': c.bgDark, 'checkbox.border': c.borderLight,
-    'activityBar.background': c.bgDark, 'activityBar.foreground': g, 'activityBar.inactiveForeground': c.muted,
+    'activityBar.background': c.bgDark, 'activityBar.foreground': g, 'activityBar.inactiveForeground': c.iconOff,
+    'activityBarTop.foreground': g, 'activityBarTop.inactiveForeground': c.iconOff, 'activityBarTop.activeBorder': g,
+    // Interfaz moderna de VS Code: estas claves mandan sobre activityBar.* en el icono seleccionado.
+    'modernActivityBarItem.activeForeground': g, 'modernActivityBarItem.activeBackground': c.bgLight,
+    'modernActivityBarItem.hoverForeground': c.fgDim, 'modernActivityBarItem.hoverBackground': c.bg,
+    'modernActivityBar.border': c.border, 'modernPanel.border': c.border,
+    // Divisiones entre secciones (Explorador, Control de código, paneles): sin esto VS Code usa un gris claro.
+    'surface.border': c.border, 'editor.border': c.border, 'sideBarActivityBarTop.border': c.border,
+    'panelSection.border': c.border, 'panelSectionHeader.border': c.border, 'sideBarTitle.border': c.border,
+    'sideBarStickyScroll.border': c.border, 'panelStickyScroll.border': c.border, 'editorGroupHeader.border': c.border,
     'activityBar.border': c.border, 'activityBar.activeBorder': g,
-    'activityBarBadge.background': s.keyword, 'activityBarBadge.foreground': '#FFFFFF',
+    'activityBarBadge.background': g, 'activityBarBadge.foreground': c.bgDarker,
+    'panelTitleBadge.background': g, 'panelTitleBadge.foreground': c.bgDarker,
     'sideBar.background': c.bgDark, 'sideBar.foreground': c.fgDim, 'sideBar.border': c.border,
     'sideBarTitle.foreground': c.fg, 'sideBarSectionHeader.background': c.bgDark,
     'sideBarSectionHeader.foreground': c.fg, 'sideBarSectionHeader.border': c.border,
@@ -210,14 +228,20 @@ function buildTheme(options) {
     'terminal.ansiBrightBlack': c.muted, 'terminal.ansiBrightRed': mix(c.red, '#FFFFFF', 0.25),
     'terminal.ansiBrightGreen': mix(g, '#FFFFFF', 0.3), 'terminal.ansiBrightYellow': s.type,
     'terminal.ansiBrightBlue': mix(s.function, '#FFFFFF', 0.25), 'terminal.ansiBrightMagenta': s.constant,
-    'terminal.ansiBrightCyan': s.operator, 'terminal.ansiBrightWhite': '#FFFFFF',
+    'terminal.ansiBrightCyan': s.operator, 'terminal.ansiBrightWhite': c.variable,
     'gitDecoration.addedResourceForeground': g, 'gitDecoration.modifiedResourceForeground': c.orange,
     'gitDecoration.deletedResourceForeground': c.red, 'gitDecoration.untrackedResourceForeground': s.property,
     'gitDecoration.ignoredResourceForeground': c.lineNumber, 'gitDecoration.conflictingResourceForeground': s.constant,
     'debugToolBar.background': c.bgDark, 'welcomePage.tileBackground': c.bgDark,
     'settings.headerForeground': g, 'settings.modifiedItemIndicator': c.orange,
     'textBlockQuote.background': c.bgDark, 'textBlockQuote.border': g, 'textCodeBlock.background': c.bgDark,
-    'textPreformat.foreground': c.orange
+    'textPreformat.foreground': c.orange,
+    // Colores que usan las vistas web de otras extensiones (p. ej. NPM Visual Manager) para estados y gráficos.
+    'testing.iconPassed': g, 'testing.iconFailed': c.red, 'testing.iconQueued': c.orange,
+    'charts.foreground': c.fg, 'charts.lines': c.borderLight, 'charts.green': g, 'charts.red': c.red,
+    'charts.blue': s.function, 'charts.yellow': s.type, 'charts.orange': c.orange, 'charts.purple': s.keyword,
+    'editorWarning.background': c.orange + '1A', 'editorHoverWidget.foreground': c.fg,
+    'symbolIcon.packageForeground': c.orange
   };
 
   const t = (scope, foreground, fontStyle) => {
@@ -252,10 +276,16 @@ function buildTheme(options) {
     t(['support.class.component', 'entity.name.tag.tsx', 'entity.name.tag.jsx'], s.type),
     t(['entity.other.attribute-name'], s.storage, 'italic'),
     t(['punctuation.definition.tag'], s.operator),
-    t(['entity.other.attribute-name.class.css', 'entity.other.attribute-name.id.css'], s.parameter),
+    t(['entity.other.attribute-name.class.css', 'entity.other.attribute-name.class.scss', 'entity.other.attribute-name.class.less'], c.pine),
+    t(['entity.other.attribute-name.id.css'], s.parameter),
+    // Variables de CSS/SCSS (--mi-var, $mi-var): blanco con toque azul cielo.
+    t(['variable.css', 'variable.argument.css', 'support.type.custom-property', 'variable.scss', 'variable.other.less'], mix(c.variable, '#87CEEB', 0.35)),
     t(['support.type.property-name.css'], s.property),
     t(['support.constant.property-value.css', 'keyword.other.unit'], s.number),
-    t(['entity.name.tag.css', 'entity.other.attribute-name.pseudo-class.css'], s.keyword),
+    // Morado más claro en CSS/SCSS: etiquetas (span), :host, ::before, @media, @include.
+    t(['entity.name.tag.css', 'entity.name.tag.scss', 'entity.other.attribute-name.pseudo-class.css',
+      'entity.other.attribute-name.pseudo-element.css', 'keyword.control.at-rule.css', 'keyword.control.at-rule.scss',
+      'keyword.control.at-rule.media.scss', 'keyword.control.at-rule.include.scss', 'keyword.control.at-rule.use.scss'], mix(s.keyword, '#FFFFFF', 0.3)),
     t(['support.type.property-name.json'], s.property),
     t(['entity.name.decorator', 'meta.decorator', 'punctuation.decorator'], s.constant, 'italic'),
     t(['entity.name.namespace', 'entity.name.module'], s.type),

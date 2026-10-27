@@ -118,67 +118,67 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Keywords (if, return, import) (por defecto #A277FF)"
+              "description": "Keywords (if, return, import) (por defecto #ACA0FF)"
             },
             "storage": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Storage (const, class, function) (por defecto #C792EA)"
+              "description": "Storage (const, class, function) (por defecto #C8B9FF)"
             },
             "function": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Funciones y métodos (por defecto #82AAFF)"
+              "description": "Funciones y métodos (por defecto #6E9CFF)"
             },
             "property": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Propiedades (por defecto #82E2FF)"
+              "description": "Propiedades (por defecto #5CDFFF)"
             },
             "type": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Clases y tipos (por defecto #FFCB6B)"
+              "description": "Clases y tipos (por defecto #FFD23F)"
             },
             "parameter": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Parámetros (por defecto #FFCA85)"
+              "description": "Parámetros (por defecto #FFB86C)"
             },
             "number": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Números (por defecto #F78C6C)"
+              "description": "Números (por defecto #FF9A3C)"
             },
             "constant": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Constantes y booleanos (por defecto #F694FF)"
+              "description": "Constantes y booleanos (por defecto #F77BFF)"
             },
             "tag": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Tags HTML / JSX (por defecto #F07178)"
+              "description": "Tags HTML / JSX (por defecto #FF5370)"
             },
             "operator": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Operadores (por defecto #89DDFF)"
+              "description": "Operadores (por defecto #5ED3FF)"
             },
             "self": {
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "this / self / super (por defecto #FF6767)"
+              "description": "this / self / super (por defecto #FF4D5E)"
             }
           }
         }

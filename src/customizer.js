@@ -26,7 +26,7 @@ function getCustomizerHtml(webview, nonce) {
     color: var(--vscode-foreground); background: var(--vscode-editor-background);
   }
   h1 { font-size: 20px; margin: 0 0 4px; font-weight: 600; }
-  h1 .prism { background: linear-gradient(90deg, #61FFCA, #82E2FF, #A277FF, #F694FF);
+  h1 .prism { background: linear-gradient(90deg, #61FFCA, #5CDFFF, #ACA0FF, #F77BFF);
     -webkit-background-clip: text; background-clip: text; color: transparent; }
   .sub { color: var(--vscode-descriptionForeground); margin: 0 0 22px; }
   .layout { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 28px; align-items: start; }
@@ -43,7 +43,7 @@ function getCustomizerHtml(webview, nonce) {
   input[type=text] { width: 100%; padding: 4px 6px; font-family: var(--vscode-editor-font-family); font-size: 12px;
     color: var(--vscode-input-foreground); background: var(--vscode-input-background);
     border: 1px solid var(--vscode-input-border, transparent); border-radius: 3px; text-transform: uppercase; }
-  input[type=text].bad { border-color: var(--vscode-inputValidation-errorBorder, #FF6767); }
+  input[type=text].bad { border-color: var(--vscode-inputValidation-errorBorder, #FF4D5E); }
   .undo { width: 26px; height: 24px; padding: 0; border: none; border-radius: 3px; cursor: pointer; font-size: 14px;
     background: transparent; color: var(--vscode-descriptionForeground); visibility: hidden; }
   .undo.show { visibility: visible; }
@@ -184,7 +184,7 @@ function getCustomizerHtml(webview, nonce) {
   var vscode = acquireVsCodeApi();
   var state = null, defaults = null, labels = {}, text = null;
   var HEX = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i;
-  var PRESETS = ['#61FFCA', '#82E2FF', '#A277FF', '#F694FF', '#FFCA85', '#C3E88D', '#FF6767', '#FFFFFF'];
+  var PRESETS = ['#61FFCA', '#5CDFFF', '#ACA0FF', '#F77BFF', '#FFB86C', '#C3E88D', '#FF4D5E', '#FFFFFF'];
 
   function norm(v) {
     var m = String(v || '').trim().match(HEX);
@@ -273,7 +273,7 @@ function getCustomizerHtml(webview, nonce) {
       '--p-border': mix(bg, '#000000', 0.38), '--p-lineNo': mix(bg, '#FFFFFF', 0.17),
       '--p-lineHl': mix(bg, '#FFFFFF', 0.04), '--p-accent': state.accentColor,
       '--p-fg': v.fg, '--p-fgDim': v.fgDim, '--p-variable': v.variable, '--p-muted': mix(bg, v.fg, 0.4),
-      '--p-red': '#FF6767', '--p-orange': '#FFCA85',
+      '--p-red': '#FF4D5E', '--p-orange': '#FFA94D',
       '--i-comment': state.italicComments ? 'italic' : 'normal',
       '--i-keyword': state.italicKeywords ? 'italic' : 'normal',
       '--i-parameter': state.italicParameters ? 'italic' : 'normal'
