@@ -153,7 +153,7 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Keywords (if, return, import) (por defecto #ACA0FF)"
+              "description": "Keywords (if, return, await) (por defecto #ACA0FF)"
             },
             "storage": {
               "type": "string",
@@ -207,7 +207,7 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Números (por defecto #CCFF4D)"
+              "description": "Números (por defecto #3BA9F5)"
             },
             "constant": {
               "type": "string",
@@ -225,7 +225,7 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "Variables declaradas con const (por defecto #FF3B4E)"
+              "description": "Variables declaradas con const (por defecto #F77BFF)"
             },
             "tag": {
               "type": "string",
@@ -243,7 +243,7 @@
               "type": "string",
               "format": "color-hex",
               "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
-              "description": "this / self / super (por defecto #FFD21F)"
+              "description": "this / self / super (por defecto #3BA9F5)"
             }
           }
         },

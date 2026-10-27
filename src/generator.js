@@ -24,20 +24,20 @@ const DEFAULTS = Object.freeze({
     classReference: '#C4EAFF',
     injected: '#9AD1FF',
     parameter: '#C4EAFF',
-    number: '#CCFF4D',
+    number: '#3BA9F5',
     constant: '#F77BFF',
     boolean: '#3BA9F5',
-    constVariable: '#FF3B4E',
+    constVariable: '#F77BFF',
     tag: '#FF5370',
     operator: '#5ED3FF',
-    self: '#FFD21F'
+    self: '#3BA9F5'
   })
 });
 
 const SYNTAX_LABELS = Object.freeze({
   comment: 'Comentarios',
   string: 'Strings',
-  keyword: 'Keywords (if, return, import)',
+  keyword: 'Keywords (if, return, await)',
   storage: 'Storage (const, class, function)',
   function: 'Funciones y métodos',
   property: 'Propiedades',
@@ -139,6 +139,9 @@ function buildTheme(options) {
     cssVarDecl: '#87CEFA',
     // Selectores de etiqueta y pseudoclases en CSS/SCSS: rojo cereza intenso.
     cssSelector: '#FF2D5C',
+    // Módulos y clases: import/export/from/class en rojo y el nombre de la clase en azul mar.
+    exportClass: '#FF4D5E',
+    classDecl: '#3BA9F5',
     // Colores hexadecimales (#61FFCA): entre azul cielo y blanco.
     hexColor: mix('#87CEEB', '#FFFFFF', 0.35),
     // Naranja intenso para const/let/var y constructor.
@@ -392,6 +395,15 @@ function buildTheme(options) {
     t(['variable.language', 'variable.language.this', 'variable.language.self', 'variable.language.super'], s.self, italic(o.italicKeywords)),
     t(['entity.name.function', 'meta.function-call', 'support.function', 'variable.function'], s.function),
     t(['entity.name.type', 'entity.name.class', 'support.class', 'support.type', 'entity.other.inherited-class'], s.type),
+    // Nombre de la clase al declararla (export class Foo): azul mar.
+    t(['entity.name.type.class'], c.classDecl),
+    // Módulos en TS/JS (import, export, from, default, as) y class: rojo.
+    t(['keyword.control.import.ts', 'keyword.control.import.tsx', 'keyword.control.import.js', 'keyword.control.import.jsx',
+      'keyword.control.export.ts', 'keyword.control.export.tsx', 'keyword.control.export.js', 'keyword.control.export.jsx',
+      'keyword.control.from.ts', 'keyword.control.from.tsx', 'keyword.control.from.js', 'keyword.control.from.jsx',
+      'keyword.control.default.ts', 'keyword.control.default.tsx', 'keyword.control.default.js', 'keyword.control.default.jsx',
+      'keyword.control.as.ts', 'keyword.control.as.tsx', 'keyword.control.as.js', 'keyword.control.as.jsx'], c.exportClass, italic(o.italicKeywords)),
+    t(['storage.type.class.ts', 'storage.type.class.tsx', 'storage.type.class.js', 'storage.type.class.jsx'], c.exportClass),
     t(['entity.name.type.interface', 'entity.name.type.alias'], s.type, 'italic'),
     t(['variable.other.property', 'variable.other.object.property', 'support.type.property-name'], s.property),
     // Claves de objetos literales ({ severity: 'error' }): rosa mexicano.
@@ -411,7 +423,8 @@ function buildTheme(options) {
     t(['constant.other.color', 'constant.other.rgb-value', 'constant.other.color.rgb-value',
       'punctuation.definition.constant.css', 'punctuation.definition.constant.scss'], c.hexColor),
     t(['support.type.property-name.css'], s.property),
-    t(['support.constant.property-value.css', 'keyword.other.unit'], s.number),
+    // Valores y unidades de CSS (block, 8px): en el verde limón de los strings.
+    t(['support.constant.property-value.css', 'keyword.other.unit'], s.string),
     // Selectores de etiqueta y pseudoclases en CSS/SCSS (:root, body, html, :host, :hover): rojo cereza intenso.
     t(['entity.name.tag.css', 'entity.name.tag.scss', 'entity.name.tag.reference.scss',
       'entity.other.attribute-name.pseudo-class.css', 'entity.other.attribute-name.pseudo-class.scss'], c.cssSelector),
@@ -463,7 +476,7 @@ function buildTheme(options) {
     method: s.function,
     // Clases usadas como valor (imports de Angular, new X): azul cielo muy claro; su declaración sigue amarilla.
     class: s.classReference,
-    'class.declaration': s.type,
+    'class.declaration': c.classDecl,
     // Servicios inyectados: private readonly http: HttpClient  /  private readonly http = inject(HttpClient)
     'parameter.readonly': s.injected,
     'property.declaration.readonly': s.injected,

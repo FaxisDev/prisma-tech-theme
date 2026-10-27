@@ -67,18 +67,20 @@ También puedes configurarlo en `settings.json`. Solo escribe lo que quieras cam
 | Fondo del editor | `#1B2126` |
 | Acento (cursor, selección, iconos activos, badges) | `#61FFCA` |
 | Texto y variables | `#C4EAFF` |
-| Strings y números | `#CCFF4D` |
-| Keywords (`if`, `return`, `import`) | `#ACA0FF` |
+| Strings | `#CCFF4D` |
+| `import` / `export` / `from` / `class` | `#FF4D5E` |
+| Keywords (`if`, `return`, `await`) | `#ACA0FF` |
 | Storage (`class`, `function`) | `#C8B9FF` |
 | `const` / `let` / `var` / `constructor` | `#FF9100` |
-| Variables `const` | `#FF3B4E` |
+| Variables `const` | `#F77BFF` |
 | Funciones y métodos | `#6E9CFF` |
 | Propiedades | `#5CDFFF` |
 | Claves de objetos (`severity:`) | `#FF6EB6` |
-| Clases y tipos | `#FFD21F` |
-| `this` / `self` / `super` | `#FFD21F` |
+| Nombre de la clase declarada | `#3BA9F5` |
+| Tipos e interfaces | `#FFD21F` |
+| `this` / `self` / `super` | `#3BA9F5` |
 | Servicios inyectados (`http`) | `#9AD1FF` |
-| Booleanos (`true`, `false`) | `#3BA9F5` |
+| Números y booleanos (`3000`, `true`) | `#3BA9F5` |
 | Constantes (`null`, enums) | `#F77BFF` |
 | Tags HTML / JSX | `#FF5370` |
 | Operadores | `#5ED3FF` |

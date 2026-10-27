@@ -445,7 +445,7 @@
         "constant.numeric"
       ],
       "settings": {
-        "foreground": "#CCFF4D"
+        "foreground": "#3BA9F5"
       }
     },
     {
@@ -490,7 +490,7 @@
         "variable.other.constant"
       ],
       "settings": {
-        "foreground": "#FF3B4E"
+        "foreground": "#F77BFF"
       }
     },
     {
@@ -581,7 +581,7 @@
         "variable.language.super"
       ],
       "settings": {
-        "foreground": "#FFD21F",
+        "foreground": "#3BA9F5",
         "fontStyle": "italic"
       }
     },
@@ -606,6 +606,53 @@
       ],
       "settings": {
         "foreground": "#FFD21F"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type.class"
+      ],
+      "settings": {
+        "foreground": "#3BA9F5"
+      }
+    },
+    {
+      "scope": [
+        "keyword.control.import.ts",
+        "keyword.control.import.tsx",
+        "keyword.control.import.js",
+        "keyword.control.import.jsx",
+        "keyword.control.export.ts",
+        "keyword.control.export.tsx",
+        "keyword.control.export.js",
+        "keyword.control.export.jsx",
+        "keyword.control.from.ts",
+        "keyword.control.from.tsx",
+        "keyword.control.from.js",
+        "keyword.control.from.jsx",
+        "keyword.control.default.ts",
+        "keyword.control.default.tsx",
+        "keyword.control.default.js",
+        "keyword.control.default.jsx",
+        "keyword.control.as.ts",
+        "keyword.control.as.tsx",
+        "keyword.control.as.js",
+        "keyword.control.as.jsx"
+      ],
+      "settings": {
+        "foreground": "#FF4D5E",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "storage.type.class.ts",
+        "storage.type.class.tsx",
+        "storage.type.class.js",
+        "storage.type.class.jsx"
+      ],
+      "settings": {
+        "foreground": "#FF4D5E"
       }
     },
     {
@@ -1020,7 +1067,7 @@
     "function": "#6E9CFF",
     "method": "#6E9CFF",
     "class": "#C4EAFF",
-    "class.declaration": "#FFD21F",
+    "class.declaration": "#3BA9F5",
     "parameter.readonly": "#9AD1FF",
     "property.declaration.readonly": "#9AD1FF",
     "property.declaration": "#FF6EB6",
@@ -1031,8 +1078,8 @@
     "type": "#FFD21F",
     "enumMember": "#F77BFF",
     "namespace": "#FFD21F",
-    "variable.readonly": "#FF3B4E",
+    "variable.readonly": "#F77BFF",
     "decorator": "#F77BFF",
-    "selfKeyword": "#FFD21F"
+    "selfKeyword": "#3BA9F5"
   }
 }
