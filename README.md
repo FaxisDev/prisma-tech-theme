@@ -20,7 +20,7 @@
 ## Installation
 
 1. Open the **Extensions** view (`Cmd + Shift + X` / `Ctrl + Shift + X`).
-2. Search for **Prisma-Tech** and install it.
+2. Search for **Theme Prisma-Tech** and install it.
 3. Pick the theme with `Cmd + K` `Cmd + T` (`Ctrl + K` `Ctrl + T`) → **Prisma-Tech**.
 
 ## Make it yours

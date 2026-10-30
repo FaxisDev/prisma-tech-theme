@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.5
+- The extension is now called **Theme Prisma-Tech**; the description is in English.
+- The Prisma-Tech section in the activity bar uses the faceted prism icon.
+
 ## 0.3.4
 - Nueva identidad visual: isotipo de prisma geométrico facetado y logotipo «PRISMA TECH» con tipografía geométrica propia.
 - Nuevo icono de la extensión con fondo transparente.

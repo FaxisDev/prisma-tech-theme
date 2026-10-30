@@ -1,8 +1,8 @@
 {
   "name": "prisma-tech-theme",
-  "displayName": "Prisma-Tech",
-  "description": "Tema oscuro prismático con panel visual para personalizar cada color en vivo: mezcla Aura y Material sobre un fondo #1B2126.",
-  "version": "0.3.4",
+  "displayName": "Theme Prisma-Tech",
+  "description": "A prismatic dark theme with a visual panel to customize every color live. Blends Aura and Material on a deep #1B2126 background.",
+  "version": "0.3.5",
   "publisher": "ArfaxadZadot",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -57,7 +57,7 @@
         {
           "id": "prismaTech",
           "title": "Prisma-Tech",
-          "icon": "$(symbol-color)"
+          "icon": "images/activity-icon.svg"
         }
       ]
     },
