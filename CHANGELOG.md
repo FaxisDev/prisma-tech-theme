@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.4
+- Nueva identidad visual: isotipo de prisma geométrico facetado y logotipo «PRISMA TECH» con tipografía geométrica propia.
+- Nuevo icono de la extensión con fondo transparente.
+- Logotipo en el README, adaptado a modo claro y oscuro.
+
 ## 0.3.3
 - Barra de estado en modo depuración con el fondo del tema ligeramente más claro, en lugar de lila.
 

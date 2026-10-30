@@ -2,6 +2,7 @@
 .github/**
 .gitignore
 *.vsix
+brand/**
 images/icon.svg
 images/screenshot-*.png
 node_modules/**

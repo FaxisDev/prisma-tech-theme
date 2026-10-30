@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="images/icon.png" width="128" alt="Prisma-Tech">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/png/prisma-tech-logo-dark-1600.png">
+    <img src="brand/png/prisma-tech-logo-light-1600.png" width="560" alt="PRISMA TECH">
+  </picture>
 </p>
-
-<h1 align="center">Prisma-Tech</h1>
 
 <p align="center">
   A prismatic dark theme for VS Code, with a visual panel to customize every color live.
@@ -121,6 +122,10 @@ The repository publishes to the Marketplace with GitHub Actions (`.github/workfl
 2. Commit and tag it: `git tag v0.3.3 && git push origin main --tags`.
 
 The action rebuilds the theme, packages it, publishes it with the `VSCE_PAT` secret and attaches the `.vsix` to the GitHub release.
+
+## Brand
+
+The logo and isotype live in [`brand/`](brand): SVG sources, 4K PNGs with transparent background and icon sizes (512, 128, 32 and 16 px). `brand/generate.py` rebuilds the SVGs.
 
 ## License
 
